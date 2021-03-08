@@ -3,7 +3,6 @@ import {css} from '@emotion/react'
 import {
   FaInstagramSquare,
   FaFacebookSquare,
-  FaWhatsapp, 
   FaSearch,
   FaBars,
   FaUserCircle,

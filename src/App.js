@@ -1,7 +1,10 @@
 import {Global,css} from '@emotion/react'
+import { Card, CardCategory } from './components/containers/Card'
 import { Content, ContentBlue, ContentSmall, ContentSub, Heading1, Heading2, Heading3 } from './components/text/Text'
 import { Button } from './components/UI/Button'
 import { Icon } from './components/UI/Icon'
+import { Logo } from './components/UI/Logo'
+import image from './assets/image.png'
 function App() {
   return (
     <div>
@@ -57,6 +60,50 @@ function App() {
       <Icon type="whatsapp" fill={"green"} size={50}/>
       <Button type={"add"}></Button>
       <Button type={"buy"}></Button>
+      <Logo type="white"></Logo>
+      <Card 
+      url="https://i.pinimg.com/originals/d5/fe/7d/d5fe7d129f178dc0eaf5028bc76cc433.jpg"
+      price="10"
+      oldPrice = "20"
+      name="Baby Ropita"
+      ofert = "-10%"
+      ></Card>
+
+      <CardCategory
+      url="https://pngimg.com/uploads/baby/baby_PNG17932.png"
+      color = "pink"
+      name="Baby Ropita"
+      ></CardCategory>
+      <CardCategory
+      url="https://pngimg.com/uploads/baby/baby_PNG17932.png"
+      color = "blue"
+      name="Baby Ropita"
+      ></CardCategory>
+      <CardCategory
+      url="https://pngimg.com/uploads/baby/baby_PNG17932.png"
+      color = "green"
+      name="Baby Ropita"
+      ></CardCategory>
+      <CardCategory
+      url="https://pngimg.com/uploads/baby/baby_PNG17932.png"
+      color = "yellow"
+      name="Baby Ropita"
+      ></CardCategory>
+      <CardCategory
+      url="https://pngimg.com/uploads/baby/baby_PNG17932.png"
+      color = "red"
+      name="Baby Ropita"
+      ></CardCategory>
+      <CardCategory
+      url="https://pngimg.com/uploads/baby/baby_PNG17932.png"
+      color = "purple"
+      name="Baby Ropita"
+      ></CardCategory>
+      <CardCategory
+      url="https://pngimg.com/uploads/baby/baby_PNG17932.png"
+      color = "orange"
+      name="Baby Ropita"
+      ></CardCategory>
     </div>
   );
 }

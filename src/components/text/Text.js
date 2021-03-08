@@ -54,12 +54,13 @@ const StyleContentBlue = styled.p`
 
 `
 const StyleContentSub = styled.p`
-  font-family: var(--fourth-font);
+  font-family: var(--thirth-font);
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
   line-height: 21px;
   color:var(--black:);
+  ${prop => prop.sub ? "text-decoration-line: line-through;":""}
 `
 const StyleContentSmall = styled.p`
   font-family: var(--fourth-font);
@@ -97,9 +98,9 @@ function ContentBlue ({children}){
     <StyleContentBlue>{children}</StyleContentBlue>
   )
 }
-function ContentSub({children}){
+function ContentSub({children, sub}){
   return (
-    <StyleContentSub>{children}</StyleContentSub>
+    <StyleContentSub sub={sub}>{children}</StyleContentSub>
   )
 }
 function ContentSmall ({children}){

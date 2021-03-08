@@ -47,18 +47,18 @@ const StyledButton = styled.button`
       fill:green;
     }
   }
-  ${(prop) => setColor[prop.type]}
+  ${(prop) => setColor[prop.type]? setColor[prop.type]:backBuy}
 `;
 
 
 function Button({type}) {
   return <StyledButton type={type}>
-    <Icon 
+    {setIcon[type] && <Icon 
     type={setIcon[type]} 
     fill={"black"} 
     size={20}>
-    </Icon>
-    <ContentButton>{setButton[type]}</ContentButton>
+    </Icon>}
+    <ContentButton>{setButton[type]? setButton[type]: type}</ContentButton>
     </StyledButton>;
 }
 
