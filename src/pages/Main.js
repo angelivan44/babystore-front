@@ -1,3 +1,4 @@
+import styled from "@emotion/styled";
 import { createFactory } from "react";
 import { Card, CardCategory } from "../components/containers/Card";
 import { CategoriesContainer } from "../components/containers/Categories_Container";
@@ -10,6 +11,15 @@ import { Content } from "../components/text/Text";
 import { Logo } from "../components/UI/Logo";
 import { STORE } from "./storage";
 
+const StyledContainer = styled.div`
+  padding:20px 0 10px 0;
+  display:flex;
+  width:100%;
+  flex-direction:column;
+  gap:16px;
+  align-items: center;
+ 
+`
 
 function Main() {
   const data =["LO NUEVO", "OFERTAS"]
@@ -34,14 +44,19 @@ function Main() {
     <>
       <Header></Header>
       <Logo type="hero"></Logo>
-      <Content>PRINCIPALES PRODUCTOS</Content>
-      <ListItem size="small" list={data}></ListItem>
-      <ClothesContainer>
-        {clothesRender}
-      </ClothesContainer>
-      <CategoriesContainer>
+      <StyledContainer>
+        <Content>PRINCIPALES PRODUCTOS</Content>
+        <ListItem size="small" list={data}></ListItem>
+        <ClothesContainer>
+          {clothesRender}
+        </ClothesContainer>
+      </StyledContainer>
+      <StyledContainer>
+        <Content>CATEGORIAS</Content>
+        <CategoriesContainer>
         {categoriesRender}
-      </CategoriesContainer>
+        </CategoriesContainer>
+      </StyledContainer>
       <GamesContainer></GamesContainer>
       <Footer/>
     </>

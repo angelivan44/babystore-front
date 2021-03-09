@@ -3,10 +3,10 @@ import styled from "@emotion/styled";
 const StyledContainer = styled.div`
   display: grid;
   align-self: center;
-  grid-template-columns: repeat(auto-fill, minmax(326px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   width: 100%;
-  gap:27px;
-  padding: 109px 18px 52px 18px;
+  gap:5%;
+  padding: 30px 18px 10px 18px;
 
 `
 function ClothesContainer({children}) {

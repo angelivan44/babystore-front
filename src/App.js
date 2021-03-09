@@ -1,5 +1,7 @@
 import {Global,css} from '@emotion/react'
-import { Main } from './pages/main'
+import { Main } from './pages/Main'
+import {Category} from './pages/Category'
+import { Clothe } from './pages/Clothe'
 function App() {
   const arr = ["uno" , "dosdasdasdasdasdsas"]
   return (

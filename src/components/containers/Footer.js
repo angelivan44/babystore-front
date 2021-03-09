@@ -20,7 +20,7 @@ const StyledFooter = styled.footer`
 const StyledDiv = styled.div`
   display: flex;
   flex-direction:column;
-  gap:10%;
+  gap:10PX;
   padding: 23px 23px 58px 23px;
   
 `
