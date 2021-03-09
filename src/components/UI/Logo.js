@@ -9,9 +9,15 @@ const StyleDiv = styled.img`
   height: 100px;
   object-fit: cover;
   transition: all 300ms;
+  ${prop => prop.hero === "hero" ? css`
+  width: 100%;
+  height: 100%;
+  `: "" }
+  ${prop => prop.hero === "normal" ? css`
   &:hover{
     transform: scale(1.1);
   }
+  `:"" }
 `
 const setLogo ={
   normal :logo,
@@ -20,7 +26,7 @@ const setLogo ={
 }
 function Logo({type}) {
   return (
-    <StyleDiv src={setLogo[type]}></StyleDiv>
+    <StyleDiv src={setLogo[type]} hero={type}></StyleDiv>
   )
 }
 

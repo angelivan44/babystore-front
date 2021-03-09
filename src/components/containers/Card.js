@@ -127,7 +127,7 @@ function Card({url ,price , oldPrice , ofert, name}) {
       <StyleImgConainer>
         <StyleHover>
           <StyleOfert>
-            <StyleOfertDiv>{ofert}</StyleOfertDiv>
+            <StyleOfertDiv>{ofert}%</StyleOfertDiv>
             <Icon type="heart" size={30}></Icon>
           </StyleOfert>
           <Button type="add"></Button>
