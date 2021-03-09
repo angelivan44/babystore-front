@@ -5,7 +5,15 @@ import { Button } from './components/UI/Button'
 import { Icon } from './components/UI/Icon'
 import { Logo } from './components/UI/Logo'
 import image from './assets/image.png'
+import { ListItem } from './components/text/Item'
+import { ListIcons } from './components/containers/List_Icons'
+import { Header } from './components/containers/Header'
+import { Footer } from './components/containers/Footer'
+import { ClothesContainer } from './components/containers/Clothes_Container'
+import { CategoriesContainer } from './components/containers/Categories_Container'
+import { GamesContainer } from './components/containers/Games_Container'
 function App() {
+  const arr = ["uno" , "dosdasdasdasdasdsas"]
   return (
     <div>
       hola mundo
@@ -104,6 +112,91 @@ function App() {
       color = "orange"
       name="Baby Ropita"
       ></CardCategory>
+      <ListItem list={arr} size="small"></ListItem>
+      <ListItem list={arr} ></ListItem>
+      <ListIcons type="social"></ListIcons>
+      <ListIcons type="header"></ListIcons>
+      <Header></Header>
+      <Footer></Footer>
+      <ClothesContainer>
+        <Card 
+        url="https://i.pinimg.com/originals/d5/fe/7d/d5fe7d129f178dc0eaf5028bc76cc433.jpg"
+        price="10"
+        oldPrice = "20"
+        name="Baby Ropita"
+        ofert = "-10%"
+        ></Card>
+        <Card 
+        url="https://i.pinimg.com/originals/d5/fe/7d/d5fe7d129f178dc0eaf5028bc76cc433.jpg"
+        price="10"
+        oldPrice = "20"
+        name="Baby Ropita"
+        ofert = "-10%"
+        ></Card>
+        <Card 
+        url="https://i.pinimg.com/originals/d5/fe/7d/d5fe7d129f178dc0eaf5028bc76cc433.jpg"
+        price="10"
+        oldPrice = "20"
+        name="Baby Ropita"
+        ofert = "-10%"
+        ></Card>
+        <Card 
+        url="https://i.pinimg.com/originals/d5/fe/7d/d5fe7d129f178dc0eaf5028bc76cc433.jpg"
+        price="10"
+        oldPrice = "20"
+        name="Baby Ropita"
+        ofert = "-10%"
+        ></Card>
+        <Card 
+        url="https://i.pinimg.com/originals/d5/fe/7d/d5fe7d129f178dc0eaf5028bc76cc433.jpg"
+        price="10"
+        oldPrice = "20"
+        name="Baby Ropita"
+        ofert = "-10%"
+        ></Card>
+        <Card 
+        url="https://i.pinimg.com/originals/d5/fe/7d/d5fe7d129f178dc0eaf5028bc76cc433.jpg"
+        price="10"
+        oldPrice = "20"
+        name="Baby Ropita"
+        ofert = "-10%"
+        ></Card>
+        <Card 
+        url="https://i.pinimg.com/originals/d5/fe/7d/d5fe7d129f178dc0eaf5028bc76cc433.jpg"
+        price="10"
+        oldPrice = "20"
+        name="Baby Ropita"
+        ofert = "-10%"
+        ></Card>
+      </ClothesContainer>
+      <CategoriesContainer>
+        <CardCategory
+        url="https://pngimg.com/uploads/baby/baby_PNG17932.png"
+        color = "orange"
+        name="Baby Ropita"
+        ></CardCategory>
+        <CardCategory
+        url="https://pngimg.com/uploads/baby/baby_PNG17932.png"
+        color = "orange"
+        name="Baby Ropita"
+        ></CardCategory>
+        <CardCategory
+        url="https://pngimg.com/uploads/baby/baby_PNG17932.png"
+        color = "orange"
+        name="Baby Ropita"
+        ></CardCategory>
+        <CardCategory
+        url="https://pngimg.com/uploads/baby/baby_PNG17932.png"
+        color = "orange"
+        name="Baby Ropita"
+        ></CardCategory>
+        <CardCategory
+        url="https://pngimg.com/uploads/baby/baby_PNG17932.png"
+        color = "orange"
+        name="Baby Ropita"
+        ></CardCategory>
+      </CategoriesContainer>
+      <GamesContainer type="Play Now"></GamesContainer>
     </div>
   );
 }

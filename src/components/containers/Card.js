@@ -43,6 +43,8 @@ const StyleDiv = styled.div`
   flex-direction:column;
   gap:5px;
   justify-content:center;
+  align-self: center;
+  justify-self: center;
   align-items: center;
   border: 1px solid #000000;
   background: #FFFFFF;

@@ -4,10 +4,14 @@ import logo from './../../assets/logo.svg'
 import logow from './../../assets/logo-white.svg'
 import hero from './../../assets/hero.png'
 
-const StyleDiv = styled.div`
-  width: auto;
-  height: auto;
+const StyleDiv = styled.img`
+  width: 212px;
+  height: 100px;
   object-fit: cover;
+  transition: all 300ms;
+  &:hover{
+    transform: scale(1.1);
+  }
 `
 const setLogo ={
   normal :logo,
@@ -16,7 +20,7 @@ const setLogo ={
 }
 function Logo({type}) {
   return (
-    <StyleDiv><img src={setLogo[type]}/></StyleDiv>
+    <StyleDiv src={setLogo[type]}></StyleDiv>
   )
 }
 
