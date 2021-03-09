@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 import { ListItem } from "../text/Item";
 import { Logo } from "../UI/Logo";
 import { ListIcons } from "./List_Icons";
@@ -17,7 +18,9 @@ const dataHeader = ["INICIO","COLECCIONES", "PREGUNTAS FRECUENTES"]
 function Header() {
   return (
     <StyledNav>
+      <Link to="/">
       <Logo type="normal"></Logo>
+      </Link> 
       <ListItem list={dataHeader}></ListItem>
       <ListIcons type="header"></ListIcons>
     </StyledNav>

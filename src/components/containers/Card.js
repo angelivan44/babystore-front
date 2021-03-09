@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 import { ContentBlue, ContentSub } from "../text/Text";
 import { Button } from "../UI/Button";
 import { Icon } from "../UI/Icon";
@@ -121,10 +122,11 @@ const StyleOfertDiv =  styled.div`
   background: #FFE600;
   border: 1px solid #000000;
   `
-function Card({url ,price , oldPrice , ofert, name}) {
+function Card({url ,price , oldPrice , ofert, name, id , category}) {
   return (
     <StyleDiv>
       <StyleImgConainer>
+      <Link to = {`/category/${category}/clothe/${id}`} >
         <StyleHover>
           <StyleOfert>
             <StyleOfertDiv>{ofert}%</StyleOfertDiv>
@@ -132,25 +134,32 @@ function Card({url ,price , oldPrice , ofert, name}) {
           </StyleOfert>
           <Button type="add"></Button>
         </StyleHover>
+        
         <StyleImg src={url}/>
+        </Link>
       </StyleImgConainer>
       <ContentSub>{name}</ContentSub>
       <StylePrices>
         <ContentBlue>S/. {price}</ContentBlue>
         <ContentSub sub={true}>S/. {oldPrice}</ContentSub>
       </StylePrices>
+
     </StyleDiv>
   )
 }
 
-function CardCategory({url ,name , color}) {
+function CardCategory({url ,name , color, history , id}) {
+  console.log(history, "cardcategoies")
   return (
     <StyleDiv category={true} color={color}>
       <SyleCover>
         <StyleImgCategory src={url} color={color}/>
       </SyleCover>
       <ContentSub>{name}</ContentSub>
-      <Button type="VER"></Button>
+      <Link to={`./${id}`}>
+        <Button type="VER" history={history}></Button>
+      </Link>
+      
     </StyleDiv>
   )
 }

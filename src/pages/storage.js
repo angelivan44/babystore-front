@@ -78,7 +78,7 @@ const STORE = {
     "service_url": "https://clothestore.sfo3.digitaloceanspaces.com/BabyStoreData/BABY%20BOY/SAFARI%201.jpg"
   },
   {
-    "id": 3,
+    "id": 4,
     "name": "vintage",
     "color": "purple",
     "clothes_count": null,

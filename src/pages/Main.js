@@ -21,7 +21,7 @@ const StyledContainer = styled.div`
  
 `
 
-function Main() {
+function Main({history}) {
   const data =["LO NUEVO", "OFERTAS"]
   const clothes = STORE.clothes
   const categories = STORE.categories
@@ -30,13 +30,29 @@ function Main() {
     const oldPrice = clothe.price + 5
     const ofert = Math.ceil((1-clothe.price / oldPrice)*100)
     return (
-      <Card url={clothe.service_url[0]} price ={clothe.price} oldPrice={oldPrice} ofert={ofert} name={clothe.name}></Card>
+      <Card 
+      url={clothe.service_url[0]} 
+      price ={clothe.price} 
+      oldPrice={oldPrice} 
+      ofert={ofert} 
+      name={clothe.name}
+      id={clothe.id}
+      category={clothe.category_id}
+      ></Card>
     )
   })
 
   const categoriesRender = categories.map(category=>{
+    console.log(history,"main")
     return (
-      <CardCategory url={category.service_url} name={category.name} color={category.color}></CardCategory>
+      <CardCategory 
+      url={category.service_url} 
+      name={category.name} 
+      color={category.color}
+      history={history}
+      id={category.id}
+      >
+      </CardCategory>
     )
   })
 

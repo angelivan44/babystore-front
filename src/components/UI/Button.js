@@ -51,8 +51,9 @@ const StyledButton = styled.button`
 `;
 
 
-function Button({type}) {
-  return <StyledButton type={type}>
+function Button({type , history}) {
+  console.log(history,"buttom")
+  return <StyledButton type={type} onClick={()=>history.push(`/category/${1}`)}>
     {setIcon[type] && <Icon 
     type={setIcon[type]} 
     fill={"black"} 

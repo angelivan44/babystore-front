@@ -1,11 +1,13 @@
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {Global,css} from '@emotion/react'
 import { Main } from './pages/Main'
-import {Category} from './pages/Category'
-import { Clothe } from './pages/Clothe'
+import { Category } from "./pages/Category";
+import { Clothe } from "./pages/Clothe";
 function App() {
   const arr = ["uno" , "dosdasdasdasdasdsas"]
+  const main = <Main/>
   return (
-    <div>
+      <div>
     <Global
       styles={css`
       @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Open+Sans&family=Oswald&family=Roboto:wght@500&display=swap');
@@ -39,8 +41,15 @@ function App() {
         }
       `}
     />
-      <Main></Main>
-    </div>
+      <Router>
+        <Switch>
+          <Route path="/category/:category_id/clothe/:id" component={Clothe}/>
+          <Route path="/category/:category_id" component={Category}/>
+          <Route path="/" component={Main} />
+        </Switch>
+      </Router>
+      </div>
+  
   );
   
 }

@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { useParams } from "react-router-dom";
 import { Card, CardCategory } from "../components/containers/Card";
 import { ShowClothe } from "../components/containers/Card_Show_Clothe";
 import { ClothesContainer } from "../components/containers/Clothes_Container";
@@ -40,8 +41,8 @@ const StyledMain = styled.div`
 
 function Clothe() {
   const data =["LO NUEVO", "OFERTAS"]
-  const clothe = STORE.clothes[0]
-
+  const {id} = useParams();
+  const clothe = STORE.clothes.find(clothe => clothe.id === parseInt(id))
   const clothesRender = clothe.service_url.map(item =>{
     return (
       <ShowClothe src={item}></ShowClothe>
