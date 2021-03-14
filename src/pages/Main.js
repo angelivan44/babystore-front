@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { createFactory } from "react";
+import { createFactory, useContext, useState } from "react";
 import { Card, CardCategory } from "../components/containers/Card";
 import { CategoriesContainer } from "../components/containers/Categories_Container";
 import { ClothesContainer } from "../components/containers/Clothes_Container";
@@ -9,6 +9,8 @@ import { Header } from "../components/containers/Header";
 import { ListItem } from "../components/text/Item";
 import { Content } from "../components/text/Text";
 import { Logo } from "../components/UI/Logo";
+import { Modal } from "../components/UI/Modal";
+import DataContext from "../DataContext";
 import { STORE } from "./storage";
 
 const StyledContainer = styled.div`
@@ -24,8 +26,8 @@ const StyledContainer = styled.div`
 function Main({history}) {
   const data =["LO NUEVO", "OFERTAS"]
   const clothes = STORE.clothes
-  const categories = STORE.categories
-
+  const categories = STORE.categories;
+  const {state} = useContext(DataContext);
   const clothesRender = clothes.map(clothe =>{
     const oldPrice = clothe.price + 5
     const ofert = Math.ceil((1-clothe.price / oldPrice)*100)
@@ -38,12 +40,12 @@ function Main({history}) {
       name={clothe.name}
       id={clothe.id}
       category={clothe.category_id}
+      edit={state.edit}
       ></Card>
     )
   })
 
   const categoriesRender = categories.map(category=>{
-    console.log(history,"main")
     return (
       <CardCategory 
       url={category.service_url} 
@@ -51,6 +53,7 @@ function Main({history}) {
       color={category.color}
       history={history}
       id={category.id}
+      edit={state.edit}
       >
       </CardCategory>
     )
@@ -74,6 +77,7 @@ function Main({history}) {
         </CategoriesContainer>
       </StyledContainer>
       <GamesContainer></GamesContainer>
+      {state.modal && <Modal type={state.modal}/> }
       <Footer/>
     </>
   )

@@ -1,4 +1,90 @@
 const STORE = {
+  user: {
+    "password_digest": "$2a$12$B3K4gzBqkknHJm43byaXueiqepCI.qaFoXat1ixqOS4q/47vefL0y",
+    "id": 2,
+    "token": "MiqkDnMqhNwxQY7nyPm3CN1Y",
+    "username": "angel",
+    "mail": "angel@mail.com",
+    "role": "admin",
+    "created_at": "2021-03-07T23:44:25.691Z",
+    "updated_at": "2021-03-07T23:45:23.129Z",
+    "favorites" : [
+      {
+        "id": 1,
+        "name": "Baby Dress",
+        "price": 55,
+        "size": "Xaa",
+        "brand": "Gucci",
+        "stock": 2,
+        "category_id": 1,
+        "service_url": [
+          "https://clothestore.sfo3.digitaloceanspaces.com/BabyStoreData/BABY%20BOY/19601410%20%281%29.jpg",
+          "https://clothestore.sfo3.digitaloceanspaces.com/BabyStoreData/BABY%20BOY/1H510010.jpg"
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Baby Pants",
+        "price": 20,
+        "size": null,
+        "brand": null,
+        "stock": null,
+        "category_id": 2,
+        "service_url": [
+          "https://clothestore.sfo3.digitaloceanspaces.com/BabyStoreData/BABY%20BOY/1H510010.jpg"
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Baby sniker",
+        "price": 30,
+        "size": null,
+        "brand": null,
+        "stock": null,
+        "category_id": 3,
+        "service_url": [
+          "https://clothestore.sfo3.digitaloceanspaces.com/BabyStoreData/BABY%20BOY/canguro%202.jpg"
+        ]
+      }],
+      "buy" : [
+        {
+          "id": 1,
+          "name": "Baby Dress",
+          "price": 55,
+          "size": "Xaa",
+          "brand": "Gucci",
+          "stock": 2,
+          "category_id": 1,
+          "service_url": [
+            "https://clothestore.sfo3.digitaloceanspaces.com/BabyStoreData/BABY%20BOY/19601410%20%281%29.jpg",
+            "https://clothestore.sfo3.digitaloceanspaces.com/BabyStoreData/BABY%20BOY/1H510010.jpg"
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Baby Pants",
+          "price": 20,
+          "size": null,
+          "brand": null,
+          "stock": null,
+          "category_id": 2,
+          "service_url": [
+            "https://clothestore.sfo3.digitaloceanspaces.com/BabyStoreData/BABY%20BOY/1H510010.jpg"
+          ]
+        },
+        {
+          "id": 3,
+          "name": "Baby sniker",
+          "price": 30,
+          "size": null,
+          "brand": null,
+          "stock": null,
+          "category_id": 3,
+          "service_url": [
+            "https://clothestore.sfo3.digitaloceanspaces.com/BabyStoreData/BABY%20BOY/canguro%202.jpg"
+          ]
+        }]
+  },
   clothes:[
     {
       "id": 1,

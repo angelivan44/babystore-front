@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { Card, CardCategory } from "../components/containers/Card";
 import { ClothesContainer } from "../components/containers/Clothes_Container";
@@ -8,6 +9,8 @@ import { Header } from "../components/containers/Header";
 import { ListItem } from "../components/text/Item";
 import { Content } from "../components/text/Text";
 import { Logo } from "../components/UI/Logo";
+import { Modal } from "../components/UI/Modal";
+import DataContext from "../DataContext";
 import { STORE } from "./storage";
 
 
@@ -23,12 +26,12 @@ const StyledContainer = styled.div`
 `
 
 function Category({history , location , match}) {
+  const {state} = useContext(DataContext);
   const data =["LO NUEVO", "OFERTAS"]
   const clothes = STORE.clothes
   const categories = STORE.categories
   const {category_id}= useParams()
   const category = categories.find(cat => cat.id == parseInt(category_id))
-  console.log(category,"aaaaaaaaaa")
 
   const clothesRender = clothes
   .filter(item => item.category_id==category_id)
@@ -59,6 +62,7 @@ function Category({history , location , match}) {
         </ClothesContainer>
       </StyledContainer>
       <GamesContainer></GamesContainer>
+      {state.modal&&<Modal type="clothe"/>}
       <Footer/>
     </>
   )

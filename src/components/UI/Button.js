@@ -11,6 +11,9 @@ const backAdd = css`
 const backBuy = css`
   background: var(--yellow);
 `
+const backSubmit = css`
+  background: var(--submit);
+`
 const setButton = {
   add : "AÑADIR A CARRITO",
   buy : "COMPRAR",
@@ -23,6 +26,7 @@ const setIcon = {
 const setColor = {
   add : backAdd,
   buy : backBuy,
+  Submit:backSubmit,
 }
 
 
@@ -51,9 +55,8 @@ const StyledButton = styled.button`
 `;
 
 
-function Button({type , history}) {
-  console.log(history,"buttom")
-  return <StyledButton type={type} onClick={()=>history.push(`/category/${1}`)}>
+function Button({type , history, onClick}) {
+  return <StyledButton type={type} onClick={onClick}>
     {setIcon[type] && <Icon 
     type={setIcon[type]} 
     fill={"black"} 

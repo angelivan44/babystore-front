@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { Card, CardCategory } from "../components/containers/Card";
 import { ShowClothe } from "../components/containers/Card_Show_Clothe";
@@ -10,6 +11,8 @@ import { ListItem } from "../components/text/Item";
 import { Content, ContentBlue, ContentSub } from "../components/text/Text";
 import { Button } from "../components/UI/Button";
 import { Logo } from "../components/UI/Logo";
+import { Modal } from "../components/UI/Modal";
+import DataContext from "../DataContext";
 import { STORE } from "./storage";
 
 const StyledContainer = styled.div`
@@ -40,6 +43,7 @@ const StyledMain = styled.div`
 `
 
 function Clothe() {
+  const {state , setModalType} = useContext(DataContext);
   const data =["LO NUEVO", "OFERTAS"]
   const {id} = useParams();
   const clothe = STORE.clothes.find(clothe => clothe.id === parseInt(id))
@@ -68,9 +72,12 @@ function Clothe() {
           <StyledContainer>
             <Button type="add"></Button>
             <Button type="buy"></Button>
+            {state.edit&&<Button type="edit" onClick={()=>setModalType("clothe")}/>}
           </StyledContainer>
         </StyledData>
+        {state.modal&&<Modal type="clothe"/>}
       </StyledMain>
+      
       <Footer/>
     </>
   )

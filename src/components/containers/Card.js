@@ -1,7 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import DataContext from "../../DataContext";
 import { ContentBlue, ContentSub } from "../text/Text";
 import { Button } from "../UI/Button";
 import { Icon } from "../UI/Icon";
@@ -100,14 +102,20 @@ const SyleCover = styled.div`
   height: 175px;
 `
 const StyleOfert =  styled.div`
-
   display:flex;
   justify-content: space-between;
+  `
+  const StyleEdit =  styled.div`
+  display:flex;
+  justify-content: space-between;
+  width:25%
   `
   const StylePrices =  styled.div`
   display:flex;
   justify-content: space-between;
-  width:130px;
+  width:140px;
+  align-items:center;
+  gap;5px;
   `
 const StyleOfertDiv =  styled.div`
   width: 57px;
@@ -122,7 +130,16 @@ const StyleOfertDiv =  styled.div`
   background: #FFE600;
   border: 1px solid #000000;
   `
-function Card({url ,price , oldPrice , ofert, name, id , category}) {
+function Card({
+  url,
+  price, 
+  oldPrice, 
+  ofert, 
+  name, 
+  id, 
+  category, 
+  }) {
+    const {setModalType, state} = useContext(DataContext)
   return (
     <StyleDiv>
       <StyleImgConainer>
@@ -143,23 +160,39 @@ function Card({url ,price , oldPrice , ofert, name, id , category}) {
         <ContentBlue>S/. {price}</ContentBlue>
         <ContentSub sub={true}>S/. {oldPrice}</ContentSub>
       </StylePrices>
-
+      {state.edit&&<StyleEdit>
+            <Icon type="edit" size={15} onClick={()=>{setModalType("clothe")}}></Icon>
+            <Icon type="trash" size={15}></Icon>
+        </StyleEdit>}
     </StyleDiv>
   )
 }
 
-function CardCategory({url ,name , color, history , id}) {
-  console.log(history, "cardcategoies")
+function CardCategory({
+  url,
+  name, 
+  color, 
+  history, 
+  id ,
+  category,
+  edit,
+  }) {
+
+  const {setModalType} = useContext(DataContext)
   return (
     <StyleDiv category={true} color={color}>
       <SyleCover>
         <StyleImgCategory src={url} color={color}/>
       </SyleCover>
       <ContentSub>{name}</ContentSub>
-      <Link to={`./${id}`}>
-        <Button type="VER" history={history}></Button>
-      </Link>
-      
+          <Link to={`/category/${id}`}>
+            <Button type="VER" history={history}></Button>
+          </Link>
+        {edit&&<StyleEdit>
+            <Icon type="edit" size={15} onClick={()=>setModalType("category")}></Icon>
+            <Icon type="trash" size={15}></Icon>
+        </StyleEdit>}
+        
     </StyleDiv>
   )
 }

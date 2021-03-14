@@ -1,53 +1,108 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import {Global,css} from '@emotion/react'
+import React, { useReducer , useContext, useEffect } from "react"
 import { Main } from './pages/Main'
 import { Category } from "./pages/Category";
 import { Clothe } from "./pages/Clothe";
-function App() {
-  const arr = ["uno" , "dosdasdasdasdasdsas"]
-  const main = <Main/>
-  return (
-      <div>
-    <Global
-      styles={css`
-      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Open+Sans&family=Oswald&family=Roboto:wght@500&display=swap');
+import { Library } from "./pages/Library";
+import { Login, SignUp } from "./pages/SignUp";
+import DataContext from "./DataContext";
+import {User} from "./pages/User"
+import { STORE } from "./pages/storage";
 
-      :root {
-        --primary-font: 'Montserrat', sans-serif;
-        --secondary-font: 'Open Sans', sans-serif;
-        --thirth-font: 'Oswald', sans-serif;
-        --fourth-font: 'Roboto', sans-serif;
-        --primary-color: #F2749A;
-        --purple: #9FA3F2;
-        --black: ##000000;
-        --ligth-pink: #F283A6;
-        --primary-color: #F2749A;
-        --primary-color: #F2749A;
-        --blue: #1854EE;
-        --aqua: #00FFF0;
-        --yellow:#FFEC00;
-        --main-background:#FEF2F2;
-      }
+
+const reducerGeneral = (state , action) =>{
+  let newState = {}
+  switch (action.type) {
+    case "LOGIN":
+      newState = {...state,user:{...action.payload,favorites:[...action.payload.favorites],buy:[...action.payload.buy]}}
+      console.log(state , newState)
+      return newState;
+    case "SIGNUP":
+        newState = {...action.payload}
+        console.log(state , newState)
+        return newState
+    case "CREATE CLOTHE":
+      newState = {...state,clothes:[...state.clothes,action.payload]}
+      console.log(state , newState)
+      return newState;
+    case "SET MODAL":
+      newState = {...state,modal: action.payload }
+      console.log(state, newState)
+      return newState;
+    case "SET UP":
+      newState = {...state,clothe:{...action.payload.user},categories:{...action.payload.user}};
+      return newState;
+    case "MODE EDITOR":
+      newState = {...state,edit:action.payload}
+      return newState
+    case "MODE NORMAL":
+      newState = {...state,edit:action.payload}
+      return newState
+
+    default:
+      return state;
+  };
+}
+
+function App() {
+  
+  
+  const [state, dispatch] = useReducer(reducerGeneral , {user:{favorites:[],buy:[]} , categories:[] , clothes:[] , edit:false , modal:""})
+
+  const login = (userData) => {
+    const dataStoreUser = {...STORE.user,favorites:[...STORE.user.favorites],buy:[...STORE.user.buy]};
+    if(userData.mail == dataStoreUser.mail){
+      console.log(dataStoreUser)
+      dispatch({type:"LOGIN" , payload : {...dataStoreUser,favorites:[...dataStoreUser.favorites],buy:[...dataStoreUser.buy]}})
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+  const signup = (userData) => {
+    dispatch({type:"SIGNUP" , payload : {...userData}})
+  }
+
+  const createClothe = (clotheData) => {
+    dispatch({type:"CREATE CLOTHE" , payload : {...clotheData}})
+  }
+
+  const setModalType = (data)=>{
+    dispatch({type:"SET MODAL" , payload:data})
+  }
+
+  const setUp = ()=>{
+    dispatch({type:"SET UP", payload:{...STORE}})
+  }
+
+  const modeEditor = (data) =>{
+    dispatch ({type:"MODE EDITOR", payload:data})
+  }
+
+
+  useEffect(() => {
+    setUp();
+  }, [])
+
+  return (
+    <div>
       
-      
-      * {
-          color: #000000;
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-        }
-        body {
-          background: #FEF2F2;
-        }
-      `}
-    />
+      <DataContext.Provider
+      value={{login , state , signup , createClothe, setModalType, modeEditor}}
+      >
       <Router>
-        <Switch>
-          <Route path="/category/:category_id/clothe/:id" component={Clothe}/>
-          <Route path="/category/:category_id" component={Category}/>
-          <Route path="/" component={Main} />
-        </Switch>
-      </Router>
+          <Switch>
+            <Route path="/category/:category_id/clothe/:id" component={Clothe}/>
+            <Route path="/category/:category_id" component={Category}/>
+            <Route path="/user" component={User}/>
+            <Route path="/signup" component={SignUp}/>
+            <Route path="/login" component={Login}/>
+            <Route path="/test" component ={Library}/>
+            <Route path="/" component={Main} /> 
+          </Switch>
+        </Router>
+      </DataContext.Provider>
       </div>
   
   );

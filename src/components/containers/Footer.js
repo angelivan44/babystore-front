@@ -11,7 +11,7 @@ const StyledFooter = styled.footer`
   display: flex;
   width: 100%;
   height: 319px;
-  gap:10%;
+  gap:1%;
   align-items: center;
   background:black;
   padding: 23px 23px 58px 23px ;
@@ -21,13 +21,13 @@ const StyledDiv = styled.div`
   display: flex;
   flex-direction:column;
   gap:10PX;
-  padding: 23px 23px 58px 23px;
+  width:300px;
   
 `
 const StyledConteinerText = styled.div`
   display: flex;
-  gap:10%;
-  padding: 23px 23px 58px 23px;
+  gap:1%;
+  padding: 10px 10px 10px 23px;
   
 `
 const StyledDev = styled.div`

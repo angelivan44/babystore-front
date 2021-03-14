@@ -8,7 +8,10 @@ import {
   FaUserCircle,
   FaShoppingCart,
   FaArrowCircleDown,
-  FaRegHeart} from "react-icons/fa";
+  FaRegHeart,
+  FaTrashAlt,
+  FaEdit,
+  FaRegWindowClose} from "react-icons/fa";
 import {IoLogoWhatsapp} from "react-icons/io";
 const iconSet ={
   "instagram" : FaInstagramSquare,
@@ -20,6 +23,9 @@ const iconSet ={
   "arrow" : FaArrowCircleDown,
   "heart" : FaRegHeart,
   "whatsapp" : IoLogoWhatsapp,
+  "trash" : FaTrashAlt,
+  "edit" : FaEdit,
+  "closed":FaRegWindowClose,
 }
 
 function Icon({ type, fill, size, onClick }) {
