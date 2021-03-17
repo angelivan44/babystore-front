@@ -34,14 +34,12 @@ const StyledButton = styled.button`
   
   display: flex;
   justify-content: center;
+  padding:2px 5px;
   align-items: center;
-  padding: 12px 30px;
-  height: 36px;
   gap:5px;
   box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   font-weight: bold;
-  font-size: 16px;
   line-height: 20px;
   border: none;
   outline: none;
@@ -60,7 +58,7 @@ function Button({type , history, onClick}) {
     {setIcon[type] && <Icon 
     type={setIcon[type]} 
     fill={"black"} 
-    size={20}>
+    size={22}>
     </Icon>}
     <ContentButton>{setButton[type]? setButton[type]: type}</ContentButton>
     </StyledButton>;

@@ -23,8 +23,12 @@ const StyledData = styled.div`
   padding:20px 0 10px 10px;
   display:flex;
   flex-direction:column;
-  width:50%;
+  width:450px;
   gap:16px;
+  @media (max-width: 420px) {
+    flex-direction: column;
+    align-items: center;
+    }
  
 `
 
@@ -33,6 +37,11 @@ const StyledMain = styled.div`
   display:flex;
   width:100%;
   gap:16px;
+
+  @media (max-width: 420px) {
+    flex-direction: column;
+    align-items: center;
+    }
  
 `
 

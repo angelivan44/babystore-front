@@ -43,6 +43,7 @@ const StyleContent2 = styled.p`
   font-size: 18px;
   line-height: 27px;
   color:var(--black:);
+  
 `
 const StyleContentBlue = styled.p`
   font-family: var(--thirth-font);
