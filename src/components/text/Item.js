@@ -13,6 +13,8 @@ const StyleBackgroundSelect = css`
 `
 const Styledul = styled.ul`
   display: flex;
+  @media (max-width: 420px) {
+    display: none;}
 `
 const Styledli = styled.li`
   padding : 52px 25px;

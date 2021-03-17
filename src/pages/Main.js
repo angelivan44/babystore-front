@@ -19,6 +19,7 @@ const StyledContainer = styled.div`
   padding:20px 0 10px 0;
   display:flex;
   width:100%;
+  heigth :auto;
   flex-direction:column;
   gap:16px;
   align-items: center;

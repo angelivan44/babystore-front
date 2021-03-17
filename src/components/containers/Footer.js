@@ -21,13 +21,23 @@ const StyledDiv = styled.div`
   display: flex;
   flex-direction:column;
   gap:10PX;
-  width:300px;
+  width:300px;  
+`
+const StyleAndoid = styled.div`
+@media (min-width: 420px) {
+  display: none;}
+`
+const StyledContainer = styled.div`
+@media (max-width: 420px) {
+  display: none;}
   
 `
 const StyledConteinerText = styled.div`
   display: flex;
   gap:1%;
   padding: 10px 10px 10px 23px;
+  @media (max-width: 420px) {
+    display: none;}
   
 `
 const StyledDev = styled.div`
@@ -38,13 +48,18 @@ const StyledDev = styled.div`
   flex-direction:column;
   left:50%;
   bottom:10px;
+  @media (max-width: 420px) {
+    display: none;}
 `
 const dataHeader = ["INICIO","COLECCIONES", "PREGUNTAS FRECUENTES"]
 function Footer() {
   return (
     <StyledFooter>
       <Logo type="white"></Logo>
-      <div>
+      <StyleAndoid>
+       <ListIcons type="social"></ListIcons>
+      </StyleAndoid>
+      <StyledContainer>
       <StyledConteinerText>
         <StyledDiv>
           <ContentSmall>BACKSTORE</ContentSmall>
@@ -67,7 +82,9 @@ function Footer() {
         </StyledDiv>
         
       </StyledConteinerText>
-      </div>
+      
+      
+      </StyledContainer>
       <StyledDev>
           <ContentSmall>© 2021, Baby Guadalupe</ContentSmall>
           <ContentSmall>Desarrolado por Dev. Angel H. I.</ContentSmall>

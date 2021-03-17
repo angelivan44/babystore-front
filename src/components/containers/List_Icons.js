@@ -10,6 +10,12 @@ import { Icon } from "../UI/Icon";
 const Styledul = styled.ul`
   display: flex;
   gap:10px;
+  @media (max-width: 420px) {
+    display: none;}
+`
+const StyledulSocial = styled.ul`
+  display: flex;
+  gap:10px;
 `
 
 
@@ -72,13 +78,13 @@ function ListIcons({type}) {
       )
   
   const setIcon = {
-    header: headinIcons,
-    social: socialMedia,
+    header: <Styledul>{headinIcons}</Styledul>,
+    social: <StyledulSocial>{socialMedia}</StyledulSocial>,
   }
   
   return(
     
-  <Styledul>{setIcon[type]}</Styledul>
+  setIcon[type]
   
   )
  

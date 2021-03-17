@@ -3,10 +3,10 @@ import styled from "@emotion/styled";
 const StyledContainer = styled.div`
   display: grid;
   align-self: center;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
   width: 100%;
   grid-auto-rows: auto;
-  gap:5%;
+  gap:50px;
   padding: 30px 18px 10px 18px;
 
 `
