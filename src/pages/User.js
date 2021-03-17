@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Card } from "../components/containers/Card";
 import { ClothesContainer } from "../components/containers/Clothes_Container";
 import { Footer } from "../components/containers/Footer";
@@ -21,6 +22,11 @@ const StyledContainer = styled.div`
 
 function User({history , location , match , user }) {
   const {state , modeEditor} = useContext(DataContext);
+  
+  const {pathname} = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   const evalRol = (data) =>{
     return data.user.role? data.user.role === "admin" : false;
   }
@@ -29,16 +35,17 @@ function User({history , location , match , user }) {
       <Card
         url={clothe.service_url[0]} 
         price ={clothe.price} 
-        oldPrice={clothe.oldPrice} 
+        oldPrice={clothe.oldprice} 
         name={clothe.name}
         id={clothe.id}
         category={clothe.category_id}
         edit={state.edit}
+        main={false}
       />
     )
   })
 
-  const buys = state.user.buy.map(clothe=>{
+  const buys = state.user.buys.map(clothe=>{
     return (
       <Card
         url={clothe.service_url[0]} 

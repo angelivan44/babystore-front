@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
-import { useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { useLocation, useParams } from "react-router-dom";
 import { Card, CardCategory } from "../components/containers/Card";
 import { ClothesContainer } from "../components/containers/Clothes_Container";
 import { Footer } from "../components/containers/Footer";
@@ -8,6 +8,7 @@ import { GamesContainer } from "../components/containers/Games_Container";
 import { Header } from "../components/containers/Header";
 import { ListItem } from "../components/text/Item";
 import { Content } from "../components/text/Text";
+import { Icon } from "../components/UI/Icon";
 import { Logo } from "../components/UI/Logo";
 import { Modal } from "../components/UI/Modal";
 import DataContext from "../DataContext";
@@ -26,12 +27,16 @@ const StyledContainer = styled.div`
 `
 
 function Category({history , location , match}) {
-  const {state} = useContext(DataContext);
+  const {state ,selectCategory ,setModalType,selectClothe} = useContext(DataContext);
   const data =["LO NUEVO", "OFERTAS"]
-  const clothes = STORE.clothes
-  const categories = STORE.categories
+  const clothes = state.clothes
+  const categories = state.categories
   const {category_id}= useParams()
   const category = categories.find(cat => cat.id == parseInt(category_id))
+  const {pathname} = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   const clothesRender = clothes
   .filter(item => item.category_id==category_id)
@@ -47,6 +52,7 @@ function Category({history , location , match}) {
       name={clothe.name}
       id={clothe.id}
       category={clothe.category_id}
+      main={true}
       ></Card>
     )
   })
@@ -59,6 +65,17 @@ function Category({history , location , match}) {
         <ListItem size="small" list={data}></ListItem>
         <ClothesContainer>
           {clothesRender}
+          {state.edit&&<Icon 
+          type="plus" 
+          size={45}
+          onClick={(e)=>{
+            e.preventDefault();
+            selectCategory(category_id)
+            selectClothe(0)
+            console.log(state , "este state esta en el boton")
+            setModalType("clothe")
+          }}
+          />}
         </ClothesContainer>
       </StyledContainer>
       <GamesContainer></GamesContainer>

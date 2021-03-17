@@ -2,7 +2,7 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import DataContext from "../../DataContext";
 import { ContentBlue, ContentSub } from "../text/Text";
 import { Button } from "../UI/Button";
@@ -60,6 +60,7 @@ const StyleDiv = styled.div`
 const StyleImg = styled.img`
     width: 100%;
     height: 100%;
+    border-radius:5px;
 `
 const StyleImgCategory = styled.img`
     width: 100%;
@@ -137,23 +138,36 @@ function Card({
   ofert, 
   name, 
   id, 
-  category, 
+  category,
+  main
   }) {
-    const {setModalType, state} = useContext(DataContext)
+    const {
+      setModalType, 
+      state, 
+      selectClothe, 
+      selectCategory,
+      deleteClothe,
+      favoriteUser} = useContext(DataContext)
+    const {category_id} = useParams();
+    const history = useHistory();
   return (
     <StyleDiv>
       <StyleImgConainer>
-      <Link to = {`/category/${category}/clothe/${id}`} >
-        <StyleHover>
+        <StyleHover onClick={(e)=>{
+          if(e.target == e.currentTarget){
+            history.push(`/category/${category}/clothe/${id}`)
+          }
+          }}>
           <StyleOfert>
-            <StyleOfertDiv>{ofert}%</StyleOfertDiv>
-            <Icon type="heart" size={30}></Icon>
+            {main&&<StyleOfertDiv>{ofert}%</StyleOfertDiv>}
+            <Icon type="heart" size={30}
+            onClick = {()=>{favoriteUser(id)}}
+            ></Icon>
           </StyleOfert>
-          <Button type="add"></Button>
+          {main&&<Button type="add"></Button>}
         </StyleHover>
         
         <StyleImg src={url}/>
-        </Link>
       </StyleImgConainer>
       <ContentSub>{name}</ContentSub>
       <StylePrices>
@@ -161,8 +175,20 @@ function Card({
         <ContentSub sub={true}>S/. {oldPrice}</ContentSub>
       </StylePrices>
       {state.edit&&<StyleEdit>
-            <Icon type="edit" size={15} onClick={()=>{setModalType("clothe")}}></Icon>
-            <Icon type="trash" size={15}></Icon>
+            <Icon 
+              type="edit" 
+              size={15} 
+              onClick={()=>{
+                selectClothe(id)
+                selectCategory(category_id)
+                setModalType("clothe")
+                console.log(id ,state.current_clothe, "id de clothe enviado con el formulario")
+                }}></Icon>
+            <Icon 
+            type="trash" 
+            size={15}
+            onClick={()=>{deleteClothe(category_id,id)}}
+            ></Icon>
         </StyleEdit>}
     </StyleDiv>
   )
@@ -178,7 +204,7 @@ function CardCategory({
   edit,
   }) {
 
-  const {setModalType} = useContext(DataContext)
+  const {setModalType , selectCategory, deleteCategory} = useContext(DataContext)
   return (
     <StyleDiv category={true} color={color}>
       <SyleCover>
@@ -189,8 +215,18 @@ function CardCategory({
             <Button type="VER" history={history}></Button>
           </Link>
         {edit&&<StyleEdit>
-            <Icon type="edit" size={15} onClick={()=>setModalType("category")}></Icon>
-            <Icon type="trash" size={15}></Icon>
+            <Icon 
+              type="edit" 
+              size={15} 
+              onClick={()=>{
+                setModalType("category")
+                selectCategory(id)
+                }}></Icon>
+            <Icon 
+            type="trash" 
+            size={15}
+            onClick={()=>{deleteCategory(id)}}
+            ></Icon>
         </StyleEdit>}
         
     </StyleDiv>

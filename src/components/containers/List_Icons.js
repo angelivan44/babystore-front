@@ -1,6 +1,9 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
+import { useCallback, useContext } from "react";
 import { useHistory } from "react-router-dom";
+import DataContext from "../../DataContext";
+import { logout } from "../../services/session_service";
 import { Icon } from "../UI/Icon";
 
 
@@ -12,7 +15,7 @@ const Styledul = styled.ul`
 
 function ListIcons({type}) {
   const history = useHistory();
-
+  const {state,logoutService} = useContext(DataContext);
   const socialMedia = (
         <>
         <li>
@@ -35,7 +38,18 @@ function ListIcons({type}) {
         <Icon type="seach" size={43} onClick={()=>history.push("/search")}></Icon>
       </li>
       <li>
-        <Icon type="user" size={43} onClick={()=>history.push("/user")}></Icon>
+        <Icon type="user" size={43} onClick={()=>{
+          if(state.user.id){
+            history.push("/user")
+          }
+          else {
+            history.push("/login")
+          }
+          }}
+            
+            ></Icon>   
+          
+         
       </li>
       <li>
         <Icon type="cart" size={43} onClick={()=>history.push("/cart")}></Icon>
@@ -43,6 +57,16 @@ function ListIcons({type}) {
       <li>
         <Icon type="burger" size={43} onClick={()=>history.push("/about")}></Icon>
       </li>
+      {state.user.id&&<li>
+        <Icon 
+          type="logout" 
+          size={43} 
+          fill="red"
+          onClick={()=>{
+            console.log("outttt")
+            logoutService()}}
+          ></Icon>
+        </li>}
       </>
       
       )

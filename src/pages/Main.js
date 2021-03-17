@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
-import { createFactory, useContext, useState } from "react";
+import { createFactory, useContext, useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { Card, CardCategory } from "../components/containers/Card";
 import { CategoriesContainer } from "../components/containers/Categories_Container";
 import { ClothesContainer } from "../components/containers/Clothes_Container";
@@ -8,10 +9,11 @@ import { GamesContainer } from "../components/containers/Games_Container";
 import { Header } from "../components/containers/Header";
 import { ListItem } from "../components/text/Item";
 import { Content } from "../components/text/Text";
+import { Icon } from "../components/UI/Icon";
 import { Logo } from "../components/UI/Logo";
 import { Modal } from "../components/UI/Modal";
 import DataContext from "../DataContext";
-import { STORE } from "./storage";
+
 
 const StyledContainer = styled.div`
   padding:20px 0 10px 0;
@@ -25,27 +27,65 @@ const StyledContainer = styled.div`
 
 function Main({history}) {
   const data =["LO NUEVO", "OFERTAS"]
-  const clothes = STORE.clothes
-  const categories = STORE.categories;
-  const {state} = useContext(DataContext);
-  const clothesRender = clothes.map(clothe =>{
-    const oldPrice = clothe.price + 5
+  const {state , selectCategory,setModalType } = useContext(DataContext);
+  const clothes = state.clothes
+  console.log(state , "aaaaaaaa")
+  const categories = state.categories;
+
+  const {pathname} = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  const clothesNews = clothes
+  .filter(clothe => clothe.status=="new")
+  .sort((a,b)=>a.position-b.position)
+  .map(clothe =>{
+    const oldPrice = clothe.oldprice
     const ofert = Math.ceil((1-clothe.price / oldPrice)*100)
     return (
       <Card 
       url={clothe.service_url[0]} 
       price ={clothe.price} 
-      oldPrice={oldPrice} 
+      oldPrice={clothe.oldprice} 
       ofert={ofert} 
       name={clothe.name}
       id={clothe.id}
       category={clothe.category_id}
       edit={state.edit}
+      main={true}
+      ></Card>
+    )
+  })
+  
+  const clothesOfert = clothes
+  .filter(clothe => clothe.status=="ofert")
+  .sort((a,b)=>a.position-b.position)
+  .map(clothe =>{
+    const oldPrice = clothe.oldprice
+    const ofert = Math.ceil((1-clothe.price / oldPrice)*100)
+    return (
+      <Card 
+      url={clothe.service_url[0]} 
+      price ={clothe.price} 
+      oldPrice={clothe.oldprice} 
+      ofert={ofert} 
+      name={clothe.name}
+      id={clothe.id}
+      category={clothe.category_id}
+      edit={state.edit}
+      main={true}
       ></Card>
     )
   })
 
-  const categoriesRender = categories.map(category=>{
+  const setClothes = {
+    new : clothesNews,
+    ofert : clothesOfert
+  }
+  const categoriesRender = categories
+  .sort((a,b)=>a.position-b.position)
+  .map(category=>{
     return (
       <CardCategory 
       url={category.service_url} 
@@ -65,15 +105,24 @@ function Main({history}) {
       <Logo type="hero"></Logo>
       <StyledContainer>
         <Content>PRINCIPALES PRODUCTOS</Content>
-        <ListItem size="small" list={data}></ListItem>
+        <ListItem size="small" type={"option"}></ListItem>
         <ClothesContainer>
-          {clothesRender}
+          {setClothes[state.option]}
         </ClothesContainer>
       </StyledContainer>
       <StyledContainer>
         <Content>CATEGORIAS</Content>
         <CategoriesContainer>
         {categoriesRender}
+        {state.edit&&
+        <Icon 
+        type="plus" 
+        size={50}
+        onClick={()=>{
+          selectCategory(0);
+          setModalType("category");
+        }}
+        />}
         </CategoriesContainer>
       </StyledContainer>
       <GamesContainer></GamesContainer>

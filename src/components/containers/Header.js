@@ -2,6 +2,7 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
 import { ListItem } from "../text/Item";
+import { Icon } from "../UI/Icon";
 import { Logo } from "../UI/Logo";
 import { ListIcons } from "./List_Icons";
 
@@ -21,7 +22,7 @@ function Header() {
       <Link to="/">
       <Logo type="normal"></Logo>
       </Link> 
-      <ListItem list={dataHeader}></ListItem>
+      <ListItem type={"header"}></ListItem>
       <ListIcons type="header"></ListIcons>
     </StyledNav>
   )
