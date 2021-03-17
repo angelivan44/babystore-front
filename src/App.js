@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch, useHistory, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, withRouter,useHistory, useLocation } from "react-router-dom";
 import React, { useReducer , useContext, useEffect } from "react"
 import { Main } from './pages/Main'
 import { Category } from "./pages/Category";
@@ -251,14 +251,12 @@ function App() {
 
 
   useEffect(() => {
-    async function req() {
-      await setUp();
+      setUp();
       if(sessionStorage.getItem("token")){
         showUser(sessionStorage.getItem("user_id"))
+        console.log("ejecucion con token")
       }
-    };
-    req();
-    
+      console.log("ejecucion sin token")
   }, [])
   
   
@@ -281,7 +279,8 @@ function App() {
         deleteClothe,
         favoriteUser,
         logoutService,
-        optionView
+        optionView,
+        setUp
       }}
       >
 

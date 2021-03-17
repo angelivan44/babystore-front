@@ -1,4 +1,4 @@
-const BASE_URL = "https://babystoreapi.herokuapp.com/";
+const BASE_URL = "https://babystoreapi.herokuapp.com";
 
 async function apiFetch(...args){
   const response = await fetch(...args);

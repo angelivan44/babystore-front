@@ -27,16 +27,18 @@ const StyledContainer = styled.div`
 `
 
 function Category({history , location , match}) {
-  const {state ,selectCategory ,setModalType,selectClothe} = useContext(DataContext);
+  const {state ,selectCategory ,setModalType,selectClothe , setUp ,showUser} = useContext(DataContext);
   const data =["LO NUEVO", "OFERTAS"]
   const clothes = state.clothes
   const categories = state.categories
   const {category_id}= useParams()
+  console.log(state)
   const category = categories.find(cat => cat.id == parseInt(category_id))
   const {pathname} = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+
 
   const clothesRender = clothes
   .filter(item => item.category_id==category_id)

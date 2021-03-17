@@ -139,13 +139,12 @@ function FormClothe() {
   const clotheSelect = state.clothes.find(clothe => clothe.id===state.current_clothe)
   console.log(state.current_category , "actual clothe asasas")
   const [dataClothe , setDataClothe] = useState({
-    name:clotheSelect.name,
-    price:clotheSelect.price,
-    oldprice:clotheSelect.oldprice,
-    size:clotheSelect.size,
-    brand:clotheSelect.brand,
-    status:clotheSelect.status,
-    position:clotheSelect.position,
+    name:clotheSelect ? clotheSelect.name : "",
+    price:clotheSelect ? clotheSelect.price :"",
+    oldprice:clotheSelect ? clotheSelect.oldprice :"",
+    brand:clotheSelect ? clotheSelect.brand :"",
+    status:clotheSelect ? clotheSelect.status :"",
+    position:clotheSelect ? clotheSelect.position :"",
   })
   return <StyleForm >
       <StyledHeader>
@@ -175,7 +174,7 @@ function FormClothe() {
         ></input>
         <label>State</label>
         <input type="text" name="status" value = {dataClothe.status || ""}
-        onChange ={(e)=>{setDataClothe({...dataClothe,stock:e.target.value})}}
+        onChange ={(e)=>{setDataClothe({...dataClothe,status:e.target.value})}}
         ></input>
         <label>Position</label>
         <input type="text" name="position" value={dataClothe.position || "" }
