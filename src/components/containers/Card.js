@@ -154,7 +154,7 @@ function Card({
     <StyleDiv>
       <StyleImgConainer>
         <StyleHover onClick={(e)=>{
-          if(e.target == e.currentTarget){
+          if(e.target === e.currentTarget){
             history.push(`/category/${category}/clothe/${id}`)
           }
           }}>

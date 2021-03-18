@@ -1,8 +1,5 @@
-import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { ListItem } from "../text/Item";
 import { ContentSmall } from "../text/Text";
-import { Icon } from "../UI/Icon";
 import { Logo } from "../UI/Logo";
 import { ListIcons } from "./List_Icons";
 
@@ -51,7 +48,6 @@ const StyledDev = styled.div`
   @media (max-width: 420px) {
     display: none;}
 `
-const dataHeader = ["INICIO","COLECCIONES", "PREGUNTAS FRECUENTES"]
 function Footer() {
   return (
     <StyledFooter>

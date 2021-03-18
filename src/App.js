@@ -1,5 +1,5 @@
-import { BrowserRouter as Router, Route, Switch, withRouter,useHistory, useLocation } from "react-router-dom";
-import React, { useReducer , useContext, useEffect } from "react"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React, { useReducer , useEffect } from "react"
 import { Main } from './pages/Main'
 import { Category } from "./pages/Category";
 import { Clothe } from "./pages/Clothe";
@@ -7,12 +7,10 @@ import { Library } from "./pages/Library";
 import { Login, SignUp } from "./pages/SignUp";
 import DataContext from "./DataContext";
 import {User} from "./pages/User"
-import { STORE } from "./pages/storage";
 import ClotheServices from "./services/clothes_services";
 import CategoryServices from "./services/categories_service";
 import { login ,logout} from "./services/session_service";
 import UserServices from "./services/user_services";
-import { Header } from "./components/containers/Header";
 
 
 const reducerGeneral = (state , action) =>{
@@ -162,7 +160,7 @@ function App() {
 
   const logoutService = async ()=>{
     const dataLogut = await logout()
-    if(dataLogut.message == "ok"){
+    if(dataLogut.message === "ok"){
       dispatch({ type:"LOGOUT" , payload:{favorites:[],wants:[],buys:[]}})
       sessionStorage.setItem("token",null)
       sessionStorage.setItem("user_id",null)
@@ -193,7 +191,7 @@ function App() {
   const deleteClothe = async (category_id,clothe_id)=>{
     const clotheService = new ClotheServices();
     const deleteData = await clotheService.delete(category_id,clothe_id);
-    if(deleteData.message == "ok"){
+    if(deleteData.message === "ok"){
       dispatch({type:"DELETE CLOTHE", payload:{id:clothe_id}})
     }
   }
@@ -228,7 +226,7 @@ function App() {
   const deleteCategory = async (category_id)=>{
     const categoryService = new CategoryServices();
     const deleteData = await categoryService.delete(category_id);
-    if(deleteData.message == "ok"){
+    if(deleteData.message === "ok"){
       dispatch({type:"DELETE CATEGORY", payload:{id:category_id}})
     }
   }
@@ -251,12 +249,11 @@ function App() {
 
 
   useEffect(() => {
+
       setUp();
       if(sessionStorage.getItem("token")){
         showUser(sessionStorage.getItem("user_id"))
-        console.log("ejecucion con token")
       }
-      console.log("ejecucion sin token")
   }, [])
   
   
@@ -280,7 +277,6 @@ function App() {
         favoriteUser,
         logoutService,
         optionView,
-        setUp
       }}
       >
 

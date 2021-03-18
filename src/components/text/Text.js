@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import {css} from '@emotion/react'
 
 const StyleHeading = styled.h1`
   font-family: var(--primary-font);

@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { createFactory, useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Card, CardCategory } from "../components/containers/Card";
 import { CategoriesContainer } from "../components/containers/Categories_Container";
@@ -27,7 +27,6 @@ const StyledContainer = styled.div`
 `
 
 function Main({history}) {
-  const data =["LO NUEVO", "OFERTAS"]
   const {state , selectCategory,setModalType } = useContext(DataContext);
   const clothes = state.clothes
   console.log(state , "aaaaaaaa")
@@ -39,7 +38,7 @@ function Main({history}) {
   }, [pathname]);
 
   const clothesNews = clothes
-  .filter(clothe => clothe.status=="new")
+  .filter(clothe => clothe.status === "new")
   .sort((a,b)=>a.position-b.position)
   .map(clothe =>{
     const oldPrice = clothe.oldprice
@@ -60,7 +59,7 @@ function Main({history}) {
   })
   
   const clothesOfert = clothes
-  .filter(clothe => clothe.status=="ofert")
+  .filter(clothe => clothe.status === "ofert")
   .sort((a,b)=>a.position-b.position)
   .map(clothe =>{
     const oldPrice = clothe.oldprice

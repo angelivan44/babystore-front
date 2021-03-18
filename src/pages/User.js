@@ -7,7 +7,7 @@ import { Footer } from "../components/containers/Footer";
 import { Header } from "../components/containers/Header";
 import { Content, Heading1 } from "../components/text/Text";
 import { Button } from "../components/UI/Button";
-import { FormLogin, FormSignUp, FormUser } from "../components/UI/Form_Category";
+import {  FormUser } from "../components/UI/Form_Category";
 import DataContext from "../DataContext";
 
 const StyledContainer = styled.div`
@@ -20,7 +20,7 @@ const StyledContainer = styled.div`
  
 `
 
-function User({history , location , match , user }) {
+function User({ user }) {
   const {state , modeEditor} = useContext(DataContext);
   
   const {pathname} = useLocation();

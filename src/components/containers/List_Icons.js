@@ -1,9 +1,7 @@
-import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { useCallback, useContext } from "react";
+import { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import DataContext from "../../DataContext";
-import { logout } from "../../services/session_service";
 import { Icon } from "../UI/Icon";
 
 

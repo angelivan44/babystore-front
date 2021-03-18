@@ -14,10 +14,7 @@ const StyledContainer = styled.div`
   background-size: cover;
   background-position: center;
 `
-const StyledImg = styled.img`
-  width: 100%;
-  height: 100%;
-`
+
 const StyledButton = styled.div`
   display: flex;
   

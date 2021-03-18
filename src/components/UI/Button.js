@@ -1,13 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { Content, ContentButton, ContentSub } from "../text/Text";
+import { ContentButton } from "../text/Text";
 import { Icon } from "./Icon";
 
 const backAdd = css`
   background: var(--aqua);
 `
-
 const backBuy = css`
   background: var(--yellow);
 `

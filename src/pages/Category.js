@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { useContext, useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import { Card, CardCategory } from "../components/containers/Card";
+import { Card } from "../components/containers/Card";
 import { ClothesContainer } from "../components/containers/Clothes_Container";
 import { Footer } from "../components/containers/Footer";
 import { GamesContainer } from "../components/containers/Games_Container";
@@ -9,10 +9,8 @@ import { Header } from "../components/containers/Header";
 import { ListItem } from "../components/text/Item";
 import { Content } from "../components/text/Text";
 import { Icon } from "../components/UI/Icon";
-import { Logo } from "../components/UI/Logo";
 import { Modal } from "../components/UI/Modal";
 import DataContext from "../DataContext";
-import { STORE } from "./storage";
 
 
 
@@ -27,13 +25,13 @@ const StyledContainer = styled.div`
 `
 
 function Category({history , location , match}) {
-  const {state ,selectCategory ,setModalType,selectClothe , setUp ,showUser} = useContext(DataContext);
+  const {state ,selectCategory ,setModalType,selectClothe } = useContext(DataContext);
   const data =["LO NUEVO", "OFERTAS"]
   const clothes = state.clothes
   const categories = state.categories
   const {category_id}= useParams()
-  console.log(state)
-  const category = categories.find(cat => cat.id == parseInt(category_id))
+  const datcategory = categories.find(cat => cat.id === parseInt(category_id))
+  const category = datcategory || {name:"" , color : "" , service_url:""}
   const {pathname} = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -41,7 +39,7 @@ function Category({history , location , match}) {
 
 
   const clothesRender = clothes
-  .filter(item => item.category_id==category_id)
+  .filter(item => item.category_id === parseInt(category_id))
   .map(clothe =>{
     const oldPrice = clothe.price + 5
     const ofert = Math.ceil((1-clothe.price / oldPrice)*100)

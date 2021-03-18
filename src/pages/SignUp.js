@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { useContext } from "react";
 import { Footer } from "../components/containers/Footer";
 import { Header } from "../components/containers/Header";
 import { FormLogin, FormSignUp } from "../components/UI/Form_Category";

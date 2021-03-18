@@ -1,8 +1,6 @@
-import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
 import { ListItem } from "../text/Item";
-import { Icon } from "../UI/Icon";
 import { Logo } from "../UI/Logo";
 import { ListIcons } from "./List_Icons";
 
@@ -15,7 +13,6 @@ const StyledNav = styled.nav`
   padding: 0px 58px 0px 58px;
   
 `
-const dataHeader = ["INICIO","COLECCIONES", "PREGUNTAS FRECUENTES"]
 function Header() {
   return (
     <StyledNav>

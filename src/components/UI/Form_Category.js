@@ -1,16 +1,13 @@
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { useContext, useState } from "react";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import DataContext from "../../DataContext";
 import { Content, Heading1 } from "../text/Text";
 import { Button } from "./Button";
 import { Icon } from "./Icon";
 
-const backAdd = css`
-  background: var(--aqua);
-`
+
 const StyledHeader = styled.div`
   display:flex;
   width:100%;

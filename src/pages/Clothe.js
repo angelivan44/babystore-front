@@ -47,9 +47,9 @@ const StyledMain = styled.div`
 
 function Clothe() {
   const {state , setModalType} = useContext(DataContext);
-  const data =["LO NUEVO", "OFERTAS"]
   const {id} = useParams();
-  const clothe = state.clothes.find(clothe => clothe.id === parseInt(id))
+  const clotheFind = state.clothes.find(clothe => clothe.id === parseInt(id))
+  const clothe = clotheFind || {service_url:[]}
   const {pathname} = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
