@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { useContext, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { Burger } from "../components/containers/Burger";
 import { Card, CardCategory } from "../components/containers/Card";
 import { CategoriesContainer } from "../components/containers/Categories_Container";
 import { ClothesContainer } from "../components/containers/Clothes_Container";

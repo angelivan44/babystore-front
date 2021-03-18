@@ -13,6 +13,7 @@ import { FormCategory , FormClothe, FormSignUp , FormLogin} from '../components/
 import { Modal } from '../components/UI/Modal'
 import { User } from './User'
 import { STORE } from './storage'
+import { Burger } from '../components/containers/Burger'
 
 function Library() {
       const user = STORE.user
@@ -21,6 +22,7 @@ function Library() {
       <Heading1>Hola mundo</Heading1>
       <Heading2>Hola mundo</Heading2>
       <Heading3>Hola mundo</Heading3>
+      <Burger></Burger>
       <Content>Hola mindo</Content>
       <ContentBlue>Hola mundo</ContentBlue>
       <ContentSub>Hola mundo</ContentSub>

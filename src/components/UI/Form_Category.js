@@ -264,10 +264,10 @@ return <StyleForm >
       </div>
       <Button 
       type={"Submit"} 
-      onClick={(e)=>{ e.preventDefault();
+      onClick={async (e)=>{ e.preventDefault();
         const form = e.target.closest("form");
         const {mail , password} = form;
-        const result = loginService({mail:mail.value, password: password.value})
+        const result = await loginService({mail:mail.value, password: password.value})
       ;
         result ? history.push("/user"): setAlert(true) ;
       }}
