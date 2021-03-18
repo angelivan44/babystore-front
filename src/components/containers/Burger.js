@@ -12,6 +12,11 @@ const StyledBurger = styled.label`
   top:32px;
   
 `
+const StyledBurgerMain = styled.div`
+display:none;
+@media (max-width: 420px) {
+  display: block;}
+`
 const StyledBurgerNormal = styled.label`
 
 `
@@ -47,7 +52,7 @@ function Burger() {
   const history = useHistory();
    
   return (
-    <div>
+    <StyledBurgerMain>
       <StyledInput type="checkbox" id="burger" 
         onChange={(e)=>{
         const inn = e.target.closest("input")
@@ -95,7 +100,7 @@ function Burger() {
         <ListIcons type="social"></ListIcons>
       </StyleDivModal>
        </>}
-    </div>
+    </StyledBurgerMain>
     
   )
 }
